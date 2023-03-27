@@ -5,21 +5,27 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    //FISICAS
-    public float _Speed;
+
     public Rigidbody2D _PlayerRB;
+    [Header("MOVIMIENTO\n")]
+    public float _Speed = 4f;
+    
 
     private Vector2 _MoveDir;
 
 
     [Header("DASH\n")]
-    [SerializeField] private float _dashVel = 20f;
-    [SerializeField] private float _dashCD = 5f;
+    public float _dashVel = 15f;
+    public float _dashCD;
+    public float _dashingTime = 0.3f;
 
-    public float _dashingTime = 100f;
     public bool _dasheando;
     public bool _PuedeDashear;
 
+    private void Awake()
+    {
+        _PlayerRB = GetComponent<Rigidbody2D>();
+    }
     private void Update()
     {
         ProcessInputs();
@@ -36,8 +42,14 @@ public class PlayerMovement : MonoBehaviour
         _MoveDir = new Vector2(MoveX, MoveY).normalized;
 
         bool Dash = Input.GetButtonDown("Dash");
+        
+        if (Dash)
+        {
+            _dashingTime = -_dashingTime * Time.deltaTime;
+            _dashCD = 5f;
+        }
+        
 
-        _dashingTime = -_dashingTime * Time.deltaTime;
 
     }
 
@@ -47,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Dash)
         {
-            if (_dasheando = false)
+            if (_dasheando == false)
             {
                 if (_dashCD <= 0)
                 {
