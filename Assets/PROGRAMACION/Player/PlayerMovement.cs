@@ -16,11 +16,12 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("DASH\n")]
     public float _dashVel = 15f;
-    public float _dashCD;
-    public float _dashingTime = 0.3f;
+    public float _dashCD = 1f;
+    public float _dashingTime = 0.2f;
 
     public bool _dasheando;
     public bool _PuedeDashear;
+    private float _dasheo;
 
     private void Awake()
     {
@@ -29,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         ProcessInputs();
+        
     }
 
     private void FixedUpdate()
@@ -37,42 +39,46 @@ public class PlayerMovement : MonoBehaviour
     }
     private void ProcessInputs()
     {
+        //NORMAL MOVEMENT
         float MoveX = Input.GetAxisRaw("Horizontal");
         float MoveY = Input.GetAxisRaw("Vertical");
         _MoveDir = new Vector2(MoveX, MoveY).normalized;
 
-        bool Dash = Input.GetButtonDown("Dash");
-        
-        if (Dash)
+        bool Dasheo = Input.GetKey("Dash");
+
+        /*if (Dasheo)
         {
-            _dashingTime = -_dashingTime * Time.deltaTime;
-            _dashCD = 5f;
-        }
-        
-
-
+            _PuedeDashear = true;
+            StartCoroutine(DashRoutine());
+        }*/
     }
 
-
-
-    private void DashConditiono(bool Dash)
+    /*private IEnumerator DashRoutine()
     {
-        if (Dash)
+        if (_PuedeDashear)
         {
-            if (_dasheando == false)
-            {
-                if (_dashCD <= 0)
-                {
-                    _PuedeDashear = true;
-                }
-                
-            }
+            _dasheando = true;
+            _PuedeDashear = false;
+            yield return new WaitForSeconds(_dashingTime);
+            _dasheando = false;
+            yield return new WaitForSeconds(_dashCD);
+            _PuedeDashear = true;
+
         }
-    }
+    }*/
+
 
     private void MOVE()
     {
-        _PlayerRB.MovePosition(_PlayerRB.position + _MoveDir * _Speed * Time.deltaTime);
+        
+        
+            _PlayerRB.MovePosition(_PlayerRB.position + _MoveDir * _Speed * Time.deltaTime * _dashVel);
+        
+        
+        
+            _PlayerRB.MovePosition(_PlayerRB.position + _MoveDir * _Speed * Time.deltaTime);
+        
+           
     }
 
     
