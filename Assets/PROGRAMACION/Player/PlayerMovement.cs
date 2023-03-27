@@ -5,57 +5,64 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //FISICAS
+    public float _Speed;
+    public Rigidbody2D _PlayerRB;
+
+    private Vector2 _MoveDir;
 
 
-    //Fisicas
-    private Rigidbody2D playerRB;
-    [SerializeField] private float speed = 5f;
+    [Header("DASH\n")]
+    [SerializeField] private float _dashVel = 20f;
+    [SerializeField] private float _dashCD = 5f;
 
-    //Vector 2D
-    private Vector2 moveInput;
+    public float _dashingTime = 100f;
+    public bool _dasheando;
+    public bool _PuedeDashear;
 
-
-    
-    //DASH
-    [SerializeField] private float dashCoolDown;
-    [SerializeField] private float dashSpeed = 15f;
-
-
-
-    
-
-
-
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        playerRB = GetComponent<Rigidbody2D>();
+        ProcessInputs();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //Inputs
-        float moveX = Input.GetAxis("Horizontal");
-        float moveY = Input.GetAxis("Vertical");
-        moveInput = new Vector2(moveX, moveY).normalized;
-
-
-    }
-
 
     private void FixedUpdate()
     {
-        //Fisicas
-        playerRB.MovePosition(playerRB.position + moveInput * speed * Time.fixedDeltaTime);
-
+        MOVE();
     }
-
-    void DASH(bool isDashing) 
+    private void ProcessInputs()
     {
-    
-    
-    
+        float MoveX = Input.GetAxisRaw("Horizontal");
+        float MoveY = Input.GetAxisRaw("Vertical");
+        _MoveDir = new Vector2(MoveX, MoveY).normalized;
+
+        bool Dash = Input.GetButtonDown("Dash");
+
+        _dashingTime = -_dashingTime * Time.deltaTime;
+
     }
+
+
+
+    private void DashConditiono(bool Dash)
+    {
+        if (Dash)
+        {
+            if (_dasheando = false)
+            {
+                if (_dashCD <= 0)
+                {
+                    _PuedeDashear = true;
+                }
+                
+            }
+        }
+    }
+
+    private void MOVE()
+    {
+        _PlayerRB.MovePosition(_PlayerRB.position + _MoveDir * _Speed * Time.deltaTime);
+    }
+
+    
 
 }
