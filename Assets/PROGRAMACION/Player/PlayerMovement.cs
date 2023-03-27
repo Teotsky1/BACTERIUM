@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    
+
     //Fisicas
     private Rigidbody2D playerRB;
     [SerializeField] private float speed = 5f;
@@ -15,19 +15,21 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveInput;
 
 
-    /*
+    
     //DASH
     [SerializeField] private float dashCoolDown;
     [SerializeField] private float dashSpeed = 15f;
 
-    */
+
+
+    
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        playerRB = GetComponent<Rigidbody2D>();    
+        playerRB = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -37,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
         float moveX = Input.GetAxis("Horizontal");
         float moveY = Input.GetAxis("Vertical");
         moveInput = new Vector2(moveX, moveY).normalized;
-        
+
 
     }
 
@@ -45,7 +47,15 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         //Fisicas
-         playerRB.MovePosition(playerRB.position + moveInput * speed * Time.fixedDeltaTime);
+        playerRB.MovePosition(playerRB.position + moveInput * speed * Time.fixedDeltaTime);
 
     }
+
+    void DASH(bool isDashing) 
+    {
+    
+    
+    
+    }
+
 }
