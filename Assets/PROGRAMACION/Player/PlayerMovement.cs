@@ -16,12 +16,15 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("DASH\n")]
     public float _dashVel = 15f;
-    public float _dashCD = 1f;
-    public float _dashingTime = 0.2f;
+    public bool Dasheo;
 
-    public bool _dasheando;
-    public bool _PuedeDashear;
-    private float _dasheo;
+
+    [Header("COOLDOWN")]
+    public float CoolDownTime = 5f;
+
+    private float CoolDownTimer;
+    public bool InCoolDown = false;
+   
 
     private void Awake()
     {
@@ -31,11 +34,25 @@ public class PlayerMovement : MonoBehaviour
     {
         ProcessInputs();
         
+
     }
 
     private void FixedUpdate()
     {
         MOVE();
+
+        if (InCoolDown)
+        {
+            // Se reduce el temporizador del enfriamiento en cada cuadro
+            CoolDownTimer -= Time.deltaTime;
+            // Si el temporizador ha llegado a cero, el enfriamiento ha terminado
+            if (CoolDownTimer <= 0f)
+            {
+                InCoolDown = false;
+                CoolDownTimer = 0f;
+
+            }
+        }
     }
     private void ProcessInputs()
     {
@@ -43,44 +60,33 @@ public class PlayerMovement : MonoBehaviour
         float MoveX = Input.GetAxisRaw("Horizontal");
         float MoveY = Input.GetAxisRaw("Vertical");
         _MoveDir = new Vector2(MoveX, MoveY).normalized;
+        
+        
+        
+        //DASHEO
+        bool Dasheo = Input.GetKey(KeyCode.Space);
 
-        bool Dasheo = Input.GetKey("Dash");
-
-        /*if (Dasheo)
-        {
-            _PuedeDashear = true;
-            StartCoroutine(DashRoutine());
-        }*/
+       
     }
-
-    /*private IEnumerator DashRoutine()
-    {
-        if (_PuedeDashear)
-        {
-            _dasheando = true;
-            _PuedeDashear = false;
-            yield return new WaitForSeconds(_dashingTime);
-            _dasheando = false;
-            yield return new WaitForSeconds(_dashCD);
-            _PuedeDashear = true;
-
-        }
-    }*/
-
 
     private void MOVE()
     {
-        
-        
-            _PlayerRB.MovePosition(_PlayerRB.position + _MoveDir * _Speed * Time.deltaTime * _dashVel);
-        
-        
-        
+        if (!InCoolDown && Dasheo)
+        {
+            _PlayerRB.MovePosition(_PlayerRB.position + _MoveDir * Time.deltaTime * _dashVel);
+            StartCooldown();
+        }
+        else
+        {
             _PlayerRB.MovePosition(_PlayerRB.position + _MoveDir * _Speed * Time.deltaTime);
+        }
         
-           
     }
 
-    
 
+    private void StartCooldown()
+    {
+        InCoolDown = true;
+        CoolDownTimer = CoolDownTime;
+    }
 }
