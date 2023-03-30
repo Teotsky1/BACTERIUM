@@ -74,19 +74,12 @@ public class PlayerMovement : MonoBehaviour
         if (!InCoolDown && Dasheo)
         {
             _PlayerRB.MovePosition(_PlayerRB.position + _MoveDir * Time.deltaTime * _dashVel);
-            StartCooldown();
+          
         }
         else
         {
             _PlayerRB.MovePosition(_PlayerRB.position + _MoveDir * _Speed * Time.deltaTime);
         }
         
-    }
-
-
-    private void StartCooldown()
-    {
-        InCoolDown = true;
-        CoolDownTimer = CoolDownTime;
     }
 }
