@@ -358,10 +358,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c867bdbeb88e14e847d5ce1fd77dbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _PlayerRB: {fileID: 1069862379}
-  _Speed: 4
-  _dashVel: 15
-  _dashCD: 3
-  _dashingTime: 0.3
-  _dasheando: 0
-  _PuedeDashear: 0
+  rbp: {fileID: 1069862379}
+  playerVelocity: 4
+  dashForce: 15
+  dashDuration: 0.05
+  dashCD: 3
+  puedeDashear: 0
+  estaDasheando: 0
+  estaEnCD: 0

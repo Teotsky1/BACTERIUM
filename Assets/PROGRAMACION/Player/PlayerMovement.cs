@@ -5,81 +5,101 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Rigidbody2D rbp;
 
-    public Rigidbody2D _PlayerRB;
-    [Header("MOVIMIENTO\n")]
-    public float _Speed = 4f;
-    
-
-    private Vector2 _MoveDir;
+    [Header("Movmimiento")]
+    public float playerVelocity = 4f;
+    private Vector2 playerDirection;
 
 
-    [Header("DASH\n")]
-    public float _dashVel = 15f;
-    public bool Dasheo;
+    [Header("Dash")]
+    public float dashForce = 15f;
+    public float dashDuration = 0.05f;
+    public float dashCD = 3f;
+
+    //public bool estaKeyActive;
+    public bool puedeDashear;
+    public bool estaDasheando;
+    public bool estaEnCD;
 
 
-    [Header("COOLDOWN")]
-    public float CoolDownTime = 5f;
-
-    private float CoolDownTimer;
-    public bool InCoolDown = false;
-   
-
+    //UNITY METHODS
     private void Awake()
     {
-        _PlayerRB = GetComponent<Rigidbody2D>();
+        rbp = GetComponent<Rigidbody2D>();
     }
-    private void Update()
+    void Start()
     {
-        ProcessInputs();
-        
 
+    }
+
+    void Update()
+    {
+        MOVEINPUTS();
+        DASHINPUTS();
     }
 
     private void FixedUpdate()
     {
         MOVE();
-
-        if (InCoolDown)
-        {
-            // Se reduce el temporizador del enfriamiento en cada cuadro
-            CoolDownTimer -= Time.deltaTime;
-            // Si el temporizador ha llegado a cero, el enfriamiento ha terminado
-            if (CoolDownTimer <= 0f)
-            {
-                InCoolDown = false;
-                CoolDownTimer = 0f;
-
-            }
-        }
-    }
-    private void ProcessInputs()
-    {
-        //NORMAL MOVEMENT
-        float MoveX = Input.GetAxisRaw("Horizontal");
-        float MoveY = Input.GetAxisRaw("Vertical");
-        _MoveDir = new Vector2(MoveX, MoveY).normalized;
-        
-        
-        
-        //DASHEO
-        bool Dasheo = Input.GetKey(KeyCode.Space);
-
-       
     }
 
-    private void MOVE()
+
+    //CREATED METHODS
+
+    void MOVEINPUTS()
     {
-        if (!InCoolDown && Dasheo)
+        //MOVE INPUTS
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
+        playerDirection = new Vector2(moveX, moveY).normalized;
+    }
+
+    void DASHINPUTS()
+    {
+        bool estaKeyActive = Input.GetKey(KeyCode.Space);
+
+        if (estaKeyActive)
         {
-            _PlayerRB.MovePosition(_PlayerRB.position + _MoveDir * Time.deltaTime * _dashVel);
-          
+            puedeDashear = true;
         }
         else
         {
-            _PlayerRB.MovePosition(_PlayerRB.position + _MoveDir * _Speed * Time.deltaTime);
+            puedeDashear = false;
         }
-        
+
+    }
+
+    void MOVE()
+    {
+        rbp.MovePosition(rbp.position + playerDirection * playerVelocity * Time.deltaTime);
+
+        if (puedeDashear)
+        {
+            if (!estaDasheando && !estaEnCD)
+            {
+                DASH();
+            }
+        }
+    }
+
+    void DASH()
+    {
+        rbp.MovePosition(rbp.position + playerDirection * dashForce * playerVelocity * Time.deltaTime);
+
+        StartCoroutine(EnfriamientoDash());
+    }
+
+    IEnumerator EnfriamientoDash()
+    {
+        yield return new WaitForSeconds(dashDuration);
+        estaEnCD = false;
+        estaDasheando = true;
+        yield return new WaitForSeconds(0.8f);
+        estaDasheando = false;
+        estaEnCD = true;
+        yield return new WaitForSeconds(dashCD);
+        estaEnCD = false;
+        estaDasheando = false;
     }
 }
