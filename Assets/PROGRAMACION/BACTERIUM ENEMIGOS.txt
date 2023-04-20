@@ -1,0 +1,58 @@
+BACTERIUM ENEMIGOS
+
+Que en los biomas del mapa haya una probabilidad de que salgan ciertos enemigos especificamente.
+
+
+
+BOSS
+Los ataques de todos que salgan aleatoriamente + una habilidad especial
+
+Persigue al jugador por 4 segundos, luego para 2 
+
+CARACTERISTICAS
+-Barra de vida
+-
+
+Cuando aparezca el Boss a minuto 5, el jugdaor 
+
+
+ENEMIGO 1 (Amarillo)
+Camina hacia el jugador
+
+NO DROPEA
+
+ENEMIGO 2 (Morado)
+Multidireccional
+Huye del jugador 
+Congela
+
+
+DROP FREEZE
+
+ENEMIGO 3 (Verde)
+Dispara rafaga de 5
+Vacía el Dash una cantidad de segundos
+Hacia el jugador
+
+DROP INMUNIDAD
+
+ENEMIGO 4 (Azul)
+Metralleta, mucha frecuencia de disparo 
+Ataca
+
+
+DROP AUMENTA LA FRECUENCIA DE DISPARO Y EL DAÑO
+
+ENEMIGO 5 (Rojo)
+Disparos Multidireccionales
+Habilidad -> Daño progresivo luego de impacto
+Ataca
+
+DROP DAÑO PROGRESIVO
+
+ENEMIGO 6 (Negro y Rojo)
+Que en cierta proximidad del enemigo y cierto tiempo estalle 
+Ataca, va haccia el jugador pero en direcciones erraticas
+
+
+NO DROP

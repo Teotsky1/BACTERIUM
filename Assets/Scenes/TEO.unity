@@ -336,6 +336,7 @@ GameObject:
   m_Component:
   - component: {fileID: 835152153}
   - component: {fileID: 835152154}
+  - component: {fileID: 835152155}
   m_Layer: 0
   m_Name: Enemy 2
   m_TagString: Untagged
@@ -378,6 +379,22 @@ MonoBehaviour:
   fireRate: 1.5
   bullet: {fileID: 6585967597756742550, guid: 6b2ad145d51deca42983f30f0012b5c1, type: 3}
   bulletParent: {fileID: 1440652649}
+--- !u!58 &835152155
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835152151}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.12
 --- !u!1 &1069862375
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,6 +406,7 @@ GameObject:
   - component: {fileID: 1069862376}
   - component: {fileID: 1069862379}
   - component: {fileID: 1069862380}
+  - component: {fileID: 1069862381}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -447,12 +465,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rbp: {fileID: 1069862379}
   playerVelocity: 4
-  dashForce: 15
-  dashDuration: 0.05
+  dashForce: 7
+  dashDuration: 0.03
   dashCD: 3
   puedeDashear: 0
   estaDasheando: 0
   estaEnCD: 0
+--- !u!58 &1069862381
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069862375}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.47
 --- !u!1 &1083460441
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,6 +812,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2091798634}
   - component: {fileID: 2091798633}
+  - component: {fileID: 2091798635}
   m_Layer: 0
   m_Name: Enemy 1
   m_TagString: Untagged
@@ -815,6 +850,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &2091798635
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091798632}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.96
 --- !u!1 &2139365295
 GameObject:
   m_ObjectHideFlags: 3
