@@ -9,13 +9,16 @@ public class EnemyMovement1 : MonoBehaviour
     private Transform player;
     private float enemyDistanceFromPlayer;
 
+
+
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
         
     
-    private void Update()
+    
+    private void FixedUpdate()
     {
         ENEMYMOVE();
     }
@@ -24,15 +27,22 @@ public class EnemyMovement1 : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, lineOfSite);
+     
     }
 
     void ENEMYMOVE()
     {
         enemyDistanceFromPlayer = Vector2.Distance(transform.position, player.position);
 
-        if (enemyDistanceFromPlayer < lineOfSite)
+        if (enemyDistanceFromPlayer <= lineOfSite)
         {
             transform.position = Vector2.MoveTowards(this.transform.position , player.position, enemyVelocity * Time.deltaTime);
+            
         }
     }
+
+
+
+
+
 }

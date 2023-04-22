@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-//using UnityEngine.UI;
+using TMPro;
 using UnityEngine;
 
 
@@ -18,8 +18,8 @@ public class SistemaDeVida : MonoBehaviour
     [SerializeField] float tiempoInmortal = 0.5f;
 
 
-
-    //public Text VidaText;
+    public TMP_Text VidaText;
+     
 
     private void Start()
     {
@@ -34,7 +34,8 @@ public class SistemaDeVida : MonoBehaviour
         
 
         //INTERFAZ VIDA
-        //VidaText.text = hpActual.ToString();
+        VidaText.text = hpActual.ToString();
+        
     }
 
     public void QuitarVida (float Daño)
