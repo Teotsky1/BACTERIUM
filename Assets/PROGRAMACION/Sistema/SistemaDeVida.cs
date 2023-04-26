@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -8,7 +9,7 @@ public class SistemaDeVida : MonoBehaviour
 {
 
     [Header ("STATS VIDA")]
-    [SerializeField] float Maxhp = 10;
+    [SerializeField] float Maxhp = 5;
     [SerializeField] float hpActual;
 
 
@@ -19,7 +20,10 @@ public class SistemaDeVida : MonoBehaviour
 
 
     public TMP_Text VidaText;
-     
+    public GameObject[] vidas;
+
+
+    public GameObject PlayerDash;
 
     private void Start()
     {
@@ -30,11 +34,15 @@ public class SistemaDeVida : MonoBehaviour
     {
         if (hpActual > Maxhp) hpActual = Maxhp;
 
+
         if (hpActual <= 0) Death();
+        
+        
         
 
         //INTERFAZ VIDA
         VidaText.text = hpActual.ToString();
+        
         
     }
 
@@ -43,8 +51,19 @@ public class SistemaDeVida : MonoBehaviour
         if (Inmunidad) return;
 
         hpActual -= Daño;
+        
 
         StartCoroutine(TiempoInmunidad());
+
+        if (hpActual < 5) vidas[4].SetActive(false);
+
+        if (hpActual < 4) vidas[3].SetActive(false);
+
+        if (hpActual < 3) vidas[2].SetActive(false);
+
+        if (hpActual < 2) vidas[1].SetActive(false);
+
+        if (hpActual < 1) vidas[0].SetActive(false);
     }
 
     public void Curar (float curacion)
@@ -54,15 +73,20 @@ public class SistemaDeVida : MonoBehaviour
 
     public void Death()
     {
+       
+
         Destroy(this.gameObject);
     }
 
 
-    IEnumerator TiempoInmunidad()
-    {
+     IEnumerator TiempoInmunidad()
+     {
         Inmunidad = true;
         yield return new WaitForSeconds(tiempoInmortal);
         Inmunidad = false;
-    }
+     }
+
+
+
 
 }
