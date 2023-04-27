@@ -1,0 +1,63 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Enemy : MonoBehaviour
+{
+    public GameObject bulletPrefab;
+    public Transform bulletSpawn;
+    public float speed = 5f;
+    public float fireRate = 2f; // número de disparos por segundo
+    private float fireCountdown = 0f;
+    private List<GameObject> bullets = new List<GameObject>();
+
+    private Transform player;
+
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
+    void Update()
+    {
+        // mueve el enemigo hacia el jugador
+        Vector3 direction = player.position - transform.position;
+        transform.Translate(direction.normalized * speed * Time.deltaTime, Space.World);
+
+        // cuenta atrás para el próximo disparo
+        if (fireCountdown <= 0f)
+        {
+            // dispara en tres direcciones diferentes
+            for (int i = 0; i < 3; i++)
+            {
+                Quaternion rotation = Quaternion.Euler(0f, i * 60f, 0f);
+                GameObject bulletGO = Instantiate(bulletPrefab, bulletSpawn.position, rotation);
+                bullets.Add(bulletGO);
+            }
+            fireCountdown = 1f / fireRate;
+        }
+
+        fireCountdown -= Time.deltaTime;
+
+        // actualizar todos los proyectiles
+        for (int i = 0; i < bullets.Count; i++)
+        {
+            GameObject bulletGO = bullets[i];
+            if (bulletGO == null)
+            {
+                bullets.RemoveAt(i);
+                i--;
+                continue;
+            }
+
+            Bullet bullet = bulletGO.GetComponent<Bullet>();
+            bullet.Move();
+
+            if (bullet.IsOffscreen())
+            {
+                Destroy(bulletGO);
+                bullets.RemoveAt(i);
+                i--;
+            }
+        }
+    }
+}
