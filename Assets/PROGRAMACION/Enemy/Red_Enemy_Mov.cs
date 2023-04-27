@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Red_Enemy_Mov : MonoBehaviour
@@ -20,11 +21,14 @@ public class Red_Enemy_Mov : MonoBehaviour
     private float DistanceF_Player;
 
     [Header("DISPARO")]
-    public GameObject BulletParent;
     public GameObject[] BulletPrefab;
+    public GameObject[] BulletParent2;
+
 
     [SerializeField] public float FireRate = 1.6f;
-    private float NextFireTime;    
+    private float NextFireTime;
+    
+
 
 
     void Start()
@@ -58,9 +62,9 @@ public class Red_Enemy_Mov : MonoBehaviour
             
             if (DistanceF_Player <= ShhotingRange && NextFireTime < Time.time)
             {
-                Instantiate(BulletPrefab[0], BulletParent.transform.position, Quaternion.identity);
-                Instantiate(BulletPrefab[1], BulletParent.transform.position, Quaternion.identity);
-                Instantiate(BulletPrefab[2], BulletParent.transform.position, Quaternion.identity);
+                Instantiate(BulletPrefab[0], BulletParent2[0].transform.position, Quaternion.identity);
+                Instantiate(BulletPrefab[1], BulletParent2[1].transform.position, Quaternion.identity);
+                Instantiate(BulletPrefab[2], BulletParent2[2].transform.position, Quaternion.identity);
 
                 NextFireTime = Time.time + FireRate;
             }
