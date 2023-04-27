@@ -9,14 +9,14 @@ public class EnemyMovement1 : MonoBehaviour
     private Transform player;
     private float enemyDistanceFromPlayer;
 
-
-
     private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        if (playerObject != null)
+        {
+            player = playerObject.transform;
+        }
     }
-        
-    
     
     private void FixedUpdate()
     {
@@ -27,22 +27,31 @@ public class EnemyMovement1 : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, lineOfSite);
-     
     }
 
     void ENEMYMOVE()
     {
-        enemyDistanceFromPlayer = Vector2.Distance(transform.position, player.position);
-
-        if (enemyDistanceFromPlayer <= lineOfSite)
+        if (player != null)
         {
-            transform.position = Vector2.MoveTowards(this.transform.position , player.position, enemyVelocity * Time.deltaTime);
-            
+            enemyDistanceFromPlayer = Vector2.Distance(transform.position, player.position);
+
+            if (enemyDistanceFromPlayer <= lineOfSite)
+            {
+                transform.position = Vector2.MoveTowards(this.transform.position , player.position, enemyVelocity * Time.deltaTime);
+            }
         }
     }
 
+    [SerializeField]
+    private GameObject game_object;
 
+    public void Ocultar()
+    {
+        game_object.SetActive(false);
+    }
 
-
-
+    public void Mostrar()
+    {
+        game_object.SetActive(true);
+    }
 }

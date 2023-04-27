@@ -13,8 +13,6 @@ public class Enemy : MonoBehaviour
     public float fireRate = 3f;
     private float nextFireTime;
 
-
-
     public GameObject bullet;
     public GameObject bulletParent;
 
@@ -61,4 +59,6 @@ public class Enemy : MonoBehaviour
         }
 
     }
+
+
 }
