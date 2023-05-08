@@ -9,7 +9,7 @@ public class PoisonBullet : MonoBehaviour
     Rigidbody2D RedBulletrb;
 
     [Header("DAÑO")]
-    [SerializeField] float daño;
+    [SerializeField] float daño = 1;
 
     
 
@@ -24,25 +24,7 @@ public class PoisonBullet : MonoBehaviour
         RedBulletrb.velocity = new Vector2(moveDir.x , moveDir.y );
         Destroy(this.gameObject, 1.5f);
     }
-    /*public void CambioEnVectoVel(bool debecambiar)
-    {
-        if (debecambiar)
-        {
-            RedBulletrb = GetComponent<Rigidbody2D>();
-            target = GameObject.FindGameObjectWithTag("Player");
-            Vector2 moveDir = (target.transform.position - transform.position).normalized * speed;
-            RedBulletrb.velocity = new Vector2(moveDir.x + randomNumber1, moveDir.y + randomNumber2);
-            Destroy(this.gameObject, 1.5f);
-        }
-        else
-        {
-            RedBulletrb = GetComponent<Rigidbody2D>();
-            target = GameObject.FindGameObjectWithTag("Player");
-            Vector2 moveDir = (target.transform.position - transform.position).normalized * speed;
-            RedBulletrb.velocity = new Vector2(moveDir.x, moveDir.y);
-            Destroy(this.gameObject, 1.5f);
-        }
-    }*/
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

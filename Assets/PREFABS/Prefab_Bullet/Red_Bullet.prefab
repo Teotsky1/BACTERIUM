@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 13
-  "da\xF1o": 0
+  "da\xF1o": 1
   TocaJugador: 0
 --- !u!212 &3933810280422821781
 SpriteRenderer:

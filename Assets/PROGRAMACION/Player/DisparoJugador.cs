@@ -30,4 +30,9 @@ public class DisparoJugador : MonoBehaviour
         Instantiate(Bala, shootController.position, shootController.rotation);
 
     }
+
+    public void DisminuciónFireRate(float Disminucion)
+    {
+        fireRate -= Disminucion;
+    }
 }
