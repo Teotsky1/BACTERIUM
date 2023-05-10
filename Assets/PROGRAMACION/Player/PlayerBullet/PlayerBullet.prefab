@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 481336707756372524}
-  - component: {fileID: 481336707756372526}
   - component: {fileID: 481336707756372527}
-  - component: {fileID: -3025965148885428666}
+  - component: {fileID: 9016629044534095731}
+  - component: {fileID: -6623666779557437907}
   m_Layer: 0
   m_Name: PlayerBullet
   m_TagString: Untagged
@@ -34,22 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &481336707756372526
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 481336707756372528}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 1}
-  m_Direction: 0
 --- !u!212 &481336707756372527
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -102,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-3025965148885428666
+--- !u!114 &9016629044534095731
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,8 +95,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 481336707756372528}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 569114cacbb931f40b836283ed9ac38e, type: 3}
+  m_Script: {fileID: 11500000, guid: 58b414dbfdd5f8b4b8608416528e7db8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletVel: 15
   "Da\xF1o": 1
+  BulletVel: 15
+--- !u!58 &-6623666779557437907
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481336707756372528}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
