@@ -7,6 +7,10 @@ public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rbp;
 
+
+    public GameObject[] estamina;
+
+
     [Header("Movmimiento")]
     public float playerVelocity = 4f;
     private Vector2 playerDirection;
@@ -15,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Dash")]
     public float dashForce = 15f;
     public float dashDuration = 0.05f;
-    public float dashCD = 3f;
+    public float dashCD = 4f;
 
     //public bool estaKeyActive;
     public bool puedeDashear;
@@ -23,15 +27,20 @@ public class PlayerMovement : MonoBehaviour
     public bool estaEnCD;
 
 
+    [Header("Congelamiento")]
+    private bool estaCongelado = false;
+
+    public GameObject CambioSprite;
+    [SerializeField] float FrozenT;
+    [SerializeField] public Sprite normal;
+    [SerializeField] public Sprite FrozenSprite;
+
     //UNITY METHODS
     private void Awake()
     {
         rbp = GetComponent<Rigidbody2D>();
     }
-    void Start()
-    {
-
-    }
+   
 
     void Update()
     {
@@ -72,15 +81,20 @@ public class PlayerMovement : MonoBehaviour
 
     void MOVE()
     {
-        rbp.MovePosition(rbp.position + playerDirection * playerVelocity * Time.deltaTime);
-
-        if (puedeDashear)
+        if (estaCongelado != true)
         {
-            if (!estaDasheando && !estaEnCD)
+            rbp.MovePosition(rbp.position + playerDirection * playerVelocity * Time.deltaTime);
+
+            if (puedeDashear)
             {
-                DASH();
+                if (!estaDasheando && !estaEnCD)
+                {
+                    DASH();
+
+                }
             }
         }
+        
     }
 
     void DASH()
@@ -88,18 +102,72 @@ public class PlayerMovement : MonoBehaviour
         rbp.MovePosition(rbp.position + playerDirection * dashForce * playerVelocity * Time.deltaTime);
 
         StartCoroutine(EnfriamientoDash());
+        
     }
 
     IEnumerator EnfriamientoDash()
     {
+
+        estamina[3].SetActive(false);
+        estamina[2].SetActive(false);
+        estamina[1].SetActive(false);
+        estamina[0].SetActive(false);
         yield return new WaitForSeconds(dashDuration);
         estaEnCD = false;
         estaDasheando = true;
         yield return new WaitForSeconds(0.8f);
+        StartCoroutine(ActivarEsta());
         estaDasheando = false;
         estaEnCD = true;
         yield return new WaitForSeconds(dashCD);
         estaEnCD = false;
         estaDasheando = false;
+      
     }
+
+    IEnumerator ActivarEsta()
+    {
+        yield return new WaitForSeconds(1);
+        estamina[0].SetActive(true);
+        yield return new WaitForSeconds(1);
+        estamina[1].SetActive(true);
+        yield return new WaitForSeconds(1);
+        estamina[2].SetActive(true);
+        yield return new WaitForSeconds(1);
+        estamina[3].SetActive(true);
+
+    }
+
+    public void TiempoDCongelacion(bool froze)
+    {
+        if (froze)
+        {
+            estaCongelado = true;
+            StartCoroutine(Frozen(FrozenT));
+        }
+    }
+
+    IEnumerator Frozen(float congelado)
+    {
+        CambioSprite.GetComponent<SpriteRenderer>().sprite = FrozenSprite;
+
+        CambioSprite.GetComponent<Animator>().enabled = false;
+        
+        CambioSprite.GetComponent<Transform>().localScale = new Vector2(0.7f, 0.7f);
+
+        yield return new WaitForSeconds(congelado);
+       
+        CambioSprite.GetComponent<SpriteRenderer>().sprite = normal;
+       
+        CambioSprite.GetComponent<Transform>().localScale = new Vector2(4, 4);
+        
+        CambioSprite.GetComponent<Animator>().enabled = true;
+
+        estaCongelado = false;
+    }
+
+
+
+
+
 }
