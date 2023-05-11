@@ -13,8 +13,6 @@ public class Enemy : MonoBehaviour
     public float fireRate = 3f;
     private float nextFireTime;
 
-
-
     public GameObject bullet;
     public GameObject bulletParent;
 
@@ -60,4 +58,6 @@ public class Enemy : MonoBehaviour
             transform.position = Vector2.MoveTowards(this.transform.position, player.position, -1.3f * speed * Time.deltaTime);
         }
     }
+
+
 }
