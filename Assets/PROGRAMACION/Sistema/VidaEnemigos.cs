@@ -7,7 +7,6 @@ public class VidaEnemigos : MonoBehaviour
 {
     [Header("Vida")]
     [SerializeField] float HpActu;
-    //[SerializeField] float daño = 1;
 
     private bool puedeDropear;
 
@@ -16,9 +15,11 @@ public class VidaEnemigos : MonoBehaviour
 
     public GameObject[] DropPrefab;
 
+  
     public void RestarVida(float daño)
     {
-        HpActu -= daño;
+       
+         HpActu -= daño;
 
         if(HpActu <= 0)
         {

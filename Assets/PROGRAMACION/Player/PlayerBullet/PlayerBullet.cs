@@ -12,7 +12,7 @@ public class PlayerBullet : MonoBehaviour
     private void FixedUpdate()
     {
         transform.Translate(Vector2.up * BulletVel * Time.deltaTime);
-        Destroy(this.gameObject,1.5f);
+        Destroy(this.gameObject,15f);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -27,5 +27,6 @@ public class PlayerBullet : MonoBehaviour
             }
         }
 
+        Debug.Log("Tocado");
     }
 }
