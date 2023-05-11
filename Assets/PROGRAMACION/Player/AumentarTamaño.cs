@@ -6,7 +6,7 @@ using UnityEngine;
 public class AumentarTamaño : MonoBehaviour
 {
     [SerializeField] public float valorAumento;
-    public  Vector3 newSize;
+    private  Vector3 newSize;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

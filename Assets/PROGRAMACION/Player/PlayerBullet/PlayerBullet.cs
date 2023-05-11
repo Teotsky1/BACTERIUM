@@ -17,11 +17,15 @@ public class PlayerBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemys") == true)
+        if (other.GetComponent<VidaEnemigos>() != null)
         {
-            other.GetComponent<VidaEnemigos>().RestarVida(Daño);
-            Destroy(this.gameObject);
+            other.gameObject.GetComponent<VidaEnemigos>().RestarVida(Daño);
 
+            if (other.CompareTag("Enemys"))
+            {
+                Destroy(this.gameObject);
+            }
         }
+
     }
 }
