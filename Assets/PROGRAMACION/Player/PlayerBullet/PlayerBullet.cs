@@ -15,12 +15,13 @@ public class PlayerBullet : MonoBehaviour
         Destroy(this.gameObject,1.5f);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision != null && collision.CompareTag("Player") != true) 
+        if (other.CompareTag("Enemys") == true)
         {
-            Debug.Log("Toca al Enemy");
-        
+            other.GetComponent<VidaEnemigos>().RestarVida(Daño);
+            Destroy(this.gameObject);
+
         }
     }
 }
