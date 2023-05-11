@@ -27,12 +27,16 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<SistemaDeVida>() != null) 
+        if (collision.gameObject.GetComponent<SistemaDeVida>() != null)
         {
-
+            TocaJugador = true;
             collision.gameObject.GetComponent<SistemaDeVida>().QuitarVida(daño);
+            collision.GetComponent<PlayerMovement>().TiempoDCongelacion(TocaJugador);
+
+
             if (collision.CompareTag("Player"))
             Destroy(this.gameObject);
+
         }
 
 

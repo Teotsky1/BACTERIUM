@@ -6,7 +6,6 @@ using UnityEngine;
 public class VidaEnemigos : MonoBehaviour
 {
     [Header("Vida")]
-    [SerializeField] float HpMax = 5;
     [SerializeField] float HpActu;
     //[SerializeField] float daño = 1;
 
@@ -17,17 +16,14 @@ public class VidaEnemigos : MonoBehaviour
 
     public GameObject[] DropPrefab;
 
-    public void Awake()
-    {
-        HpActu = HpMax;
-    }
-    public void Update()
-    {
-        Dropeo();
-    }
     public void RestarVida(float daño)
     {
-       
+        HpActu -= daño;
+
+        if(HpActu <= 0)
+        {
+            Dropeo();
+        }
         
     }
     public void Dropeo()

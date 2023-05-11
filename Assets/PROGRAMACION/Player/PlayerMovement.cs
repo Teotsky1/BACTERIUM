@@ -27,15 +27,20 @@ public class PlayerMovement : MonoBehaviour
     public bool estaEnCD;
 
 
+    [Header("Congelamiento")]
+    private bool estaCongelado = false;
+
+    public GameObject CambioSprite;
+    [SerializeField] float FrozenT;
+    [SerializeField] public Sprite normal;
+    [SerializeField] public Sprite FrozenSprite;
+
     //UNITY METHODS
     private void Awake()
     {
         rbp = GetComponent<Rigidbody2D>();
     }
-    void Start()
-    {
-
-    }
+   
 
     void Update()
     {
@@ -76,16 +81,20 @@ public class PlayerMovement : MonoBehaviour
 
     void MOVE()
     {
-        rbp.MovePosition(rbp.position + playerDirection * playerVelocity * Time.deltaTime);
-
-        if (puedeDashear)
+        if (estaCongelado != true)
         {
-            if (!estaDasheando && !estaEnCD)
+            rbp.MovePosition(rbp.position + playerDirection * playerVelocity * Time.deltaTime);
+
+            if (puedeDashear)
             {
-                DASH();
-                
+                if (!estaDasheando && !estaEnCD)
+                {
+                    DASH();
+
+                }
             }
         }
+        
     }
 
     void DASH()
@@ -128,6 +137,37 @@ public class PlayerMovement : MonoBehaviour
         estamina[3].SetActive(true);
 
     }
+
+    public void TiempoDCongelacion(bool froze)
+    {
+        if (froze)
+        {
+            estaCongelado = true;
+            StartCoroutine(Frozen(FrozenT));
+        }
+    }
+
+    IEnumerator Frozen(float congelado)
+    {
+        CambioSprite.GetComponent<SpriteRenderer>().sprite = FrozenSprite;
+
+        CambioSprite.GetComponent<Animator>().enabled = false;
+        
+        CambioSprite.GetComponent<Transform>().localScale = new Vector2(0.7f, 0.7f);
+
+        yield return new WaitForSeconds(congelado);
+       
+        CambioSprite.GetComponent<SpriteRenderer>().sprite = normal;
+       
+        CambioSprite.GetComponent<Transform>().localScale = new Vector2(4, 4);
+        
+        CambioSprite.GetComponent<Animator>().enabled = true;
+
+        estaCongelado = false;
+    }
+
+
+
 
 
 }
