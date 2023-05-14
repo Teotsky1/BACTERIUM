@@ -211,9 +211,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.03, y: -0.03}
   serializedVersion: 2
-  m_Radius: 0.47
+  m_Radius: 0.59
 --- !u!114 &5210702865027369190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,6 +239,10 @@ MonoBehaviour:
   puedeDashear: 0
   estaDasheando: 0
   estaEnCD: 0
+  CambioSprite: {fileID: 0}
+  FrozenT: 0
+  normal: {fileID: 0}
+  FrozenSprite: {fileID: 0}
 --- !u!114 &5210702865027369188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,4 +308,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valorAumento: 0.1
-  newSize: {x: 0, y: 0, z: 0}
