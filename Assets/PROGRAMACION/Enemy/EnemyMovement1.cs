@@ -31,6 +31,7 @@ public class EnemyMovement1 : MonoBehaviour
 
     void ENEMYMOVE()
     {
+      
         if (player != null)
         {
             enemyDistanceFromPlayer = Vector2.Distance(transform.position, player.position);
@@ -42,16 +43,17 @@ public class EnemyMovement1 : MonoBehaviour
         }
     }
 
-    [SerializeField]
-    private GameObject game_object;
+ 
 
-    public void Ocultar()
+    public void CongelarEnemigo(float tiempo)
     {
-        game_object.SetActive(false);
+        StartCoroutine(Congelamiento(tiempo));
     }
 
-    public void Mostrar()
+    public IEnumerator Congelamiento(float tiempo)
     {
-        game_object.SetActive(true);
+        enemyVelocity = 0;
+        yield return new WaitForSeconds(tiempo);
+        enemyVelocity = 2;
     }
 }
