@@ -9,6 +9,10 @@ public class EnemyMovement1 : MonoBehaviour
     private Transform player;
     private float enemyDistanceFromPlayer;
 
+    public GameObject CambioSprite;
+    [SerializeField] public Sprite normal;
+    [SerializeField] public Sprite FrozenSprite;
+
     private void Awake()
     {
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
@@ -53,7 +57,24 @@ public class EnemyMovement1 : MonoBehaviour
     public IEnumerator Congelamiento(float tiempo)
     {
         enemyVelocity = 0;
+
+
+        CambioSprite.GetComponent<SpriteRenderer>().sprite = FrozenSprite;
+
+        CambioSprite.GetComponent<Animator>().enabled = false;
+
+        CambioSprite.GetComponent<Transform>().localScale = Vector3.one;
+
         yield return new WaitForSeconds(tiempo);
+
+
+        CambioSprite.GetComponent<SpriteRenderer>().sprite = normal;
+
+        CambioSprite.GetComponent<Transform>().localScale = Vector3.one;
+
+        CambioSprite.GetComponent<Animator>().enabled = true;
+
+
         enemyVelocity = 2;
     }
 }

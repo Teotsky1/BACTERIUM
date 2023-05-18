@@ -7,7 +7,7 @@ public class FreezePlayerBullet : MonoBehaviour
     [Header("Bullet Stats")]
     [SerializeField] float Daño;
     [SerializeField] float BulletVel;
-    private float tiempocongelado;
+    [SerializeField] float tiempocongelado;
 
 
     private void FixedUpdate()
@@ -33,12 +33,15 @@ public class FreezePlayerBullet : MonoBehaviour
             }
                 
 
+            if(other.gameObject.GetComponent<Red_Enemy_Mov>() != null)
+            {
+                other.gameObject.GetComponent<Red_Enemy_Mov>().CongelarEnemigo(tiempocongelado);
+            }
 
-
-
-
-
-
+            if (other.gameObject.GetComponent<Enemy>() != null)
+            {
+                other.gameObject.GetComponent<Enemy>().CongelarEnemigo(tiempocongelado);
+            }
 
 
             if (other.CompareTag("Enemys"))

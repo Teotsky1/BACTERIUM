@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanEnemigos: 4
-  tiempoReSpawn: 7
+  tiempoReSpawn: 45
   SpawnParent:
   - {fileID: 5411182635066060136}
   - {fileID: 4682981124344863583}

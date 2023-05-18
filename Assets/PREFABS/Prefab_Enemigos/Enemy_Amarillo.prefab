@@ -31,6 +31,37 @@ Transform:
   m_Father: {fileID: 7746152899385576327}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6842684777238356084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2155987611075733194}
+  m_Layer: 0
+  m_Name: ParentDrop (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2155987611075733194
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6842684777238356084}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.03, y: -0.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7746152899385576327}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7746152899209141661
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,6 +202,7 @@ Transform:
   m_Children:
   - {fileID: 7746152899209141660}
   - {fileID: 6016069959913080209}
+  - {fileID: 2155987611075733194}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -188,7 +220,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineOfSite: 14.3
   enemyVelocity: 2
-  game_object: {fileID: 0}
+  CambioSprite: {fileID: 7746152899209141661}
+  normal: {fileID: 215305554, guid: 686bb3ce74e8fca429a4d6c7be3e6878, type: 3}
+  FrozenSprite: {fileID: 21300000, guid: 1c86be7355dff0c4a8b54e864b96d70c, type: 3}
 --- !u!114 &7746152899385576321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,8 +268,10 @@ MonoBehaviour:
   HpActu: 5
   parentDrop:
   - {fileID: 3527523588982684881}
+  - {fileID: 6842684777238356084}
   DropPrefab:
   - {fileID: 2606014242527149553, guid: 207f4ecd378203b4eb0921752d322cf3, type: 3}
+  - {fileID: 4594520002034857877, guid: 448d6858de04c094a8024bef833d854c, type: 3}
   particlePrefab:
   - {fileID: 4221167017087341046, guid: 1704b50dd5011da4b8592a1f2975b761, type: 3}
   - {fileID: 3116372588365605075, guid: d5ced39a16ccb504a84544fd54b834c2, type: 3}
