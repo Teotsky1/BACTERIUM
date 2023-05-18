@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rbp;
+    private AudioSource Audio;
 
 
     public GameObject[] estamina;
@@ -26,6 +27,10 @@ public class PlayerMovement : MonoBehaviour
     public bool estaDasheando;
     public bool estaEnCD;
 
+    [SerializeField] public AudioClip dashsonido;
+   
+
+    
 
     [Header("Congelamiento")]
     private bool estaCongelado = false;
@@ -39,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rbp = GetComponent<Rigidbody2D>();
+        Audio = GetComponent<AudioSource>();
+       
     }
    
 
@@ -76,7 +83,8 @@ public class PlayerMovement : MonoBehaviour
         {
             puedeDashear = false;
         }
-
+ 
+     
     }
 
     void MOVE()
@@ -100,6 +108,8 @@ public class PlayerMovement : MonoBehaviour
     void DASH()
     {
         rbp.MovePosition(rbp.position + playerDirection * dashForce * playerVelocity * Time.deltaTime);
+
+        Audio.PlayOneShot(dashsonido,1.0f);
 
         StartCoroutine(EnfriamientoDash());
         
