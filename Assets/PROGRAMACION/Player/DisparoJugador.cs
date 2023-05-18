@@ -10,18 +10,23 @@ public class DisparoJugador : MonoBehaviour
     [SerializeField] Transform shootController;
     [SerializeField] GameObject Bala;
 
-
+    [SerializeField] public AudioClip sonidodisparo;
     [SerializeField] private float fireRate;
     private float nextFireTime;
+    private AudioSource Audio;
 
     private void FixedUpdate()
     {
+        
+
         if (Input.GetButton("Fire1") && nextFireTime < Time.time)
         {
             PlayerShoot();
             nextFireTime = Time.time + fireRate;
 
         }
+       
+        
     }
     
 
@@ -29,9 +34,11 @@ public class DisparoJugador : MonoBehaviour
     {
         Instantiate(Bala, shootController.position, shootController.rotation);
 
+        Audio = GetComponent<AudioSource>();
+        Audio.PlayOneShot(sonidodisparo);
     }
 
-    public void DisminuciónFireRate(float Disminucion)
+    public void DisminuciÃ³nFireRate(float Disminucion)
     {
         fireRate -= Disminucion;
     }

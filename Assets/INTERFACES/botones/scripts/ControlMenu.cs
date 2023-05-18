@@ -9,7 +9,7 @@ public class ControlMenu : MonoBehaviour
   public void OnpressJugar()
     {
         
-        SceneManager.LoadScene("Juego", LoadSceneMode.Single);
+        SceneManager.LoadScene("TEO", LoadSceneMode.Single);
     }
 
     public void Onpressinstrucciones()

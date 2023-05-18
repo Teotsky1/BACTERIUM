@@ -6,7 +6,10 @@ using UnityEngine;
 public class AumentarTamaño : MonoBehaviour
 {
     [SerializeField] public float valorAumento;
+    [SerializeField] public AudioClip Recoleccionsonido;
     private  Vector3 newSize;
+    private AudioSource Audio;
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -16,6 +19,9 @@ public class AumentarTamaño : MonoBehaviour
             ModificarTamaño(valorAumento);
             Destroy(collision.gameObject);
         }
+
+        Audio = GetComponent<AudioSource>();
+        Audio.PlayOneShot(Recoleccionsonido,1.0f);
 
     }
 
