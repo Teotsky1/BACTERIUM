@@ -11,13 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scenes pantallas/Menu.unity
     guid: a51580cec12ec444588e101d68045649
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Scenes pantallas/Instrucciones.unity
     guid: 88ecb8fd45c17fd42ac97491e11beea4
   - enabled: 0
-    path: Assets/Scenes/Scenes pantallas/Juego.unity
-    guid: 3462643280865d34496a5dc85f2f9090
-  - enabled: 1
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: Assets/Scenes/Scenes pantallas/Pausa.unity
     guid: 684d01893d3cc2b409223a6f227c46d9
   - enabled: 1
