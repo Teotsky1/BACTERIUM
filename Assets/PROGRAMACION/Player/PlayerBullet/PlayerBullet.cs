@@ -8,11 +8,11 @@ public class PlayerBullet : MonoBehaviour
     [SerializeField] float Daño;
     [SerializeField] float BulletVel;
 
-
+    
     private void FixedUpdate()
     {
         transform.Translate(Vector2.up * BulletVel * Time.deltaTime);
-        Destroy(this.gameObject,1.5f);
+        Destroy(this.gameObject,5f);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -26,6 +26,5 @@ public class PlayerBullet : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
-
     }
 }

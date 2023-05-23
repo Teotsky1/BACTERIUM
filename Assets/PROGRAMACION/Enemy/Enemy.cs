@@ -18,6 +18,14 @@ public class Enemy : MonoBehaviour
 
     private Transform player;
 
+
+    public GameObject CambioSprite;
+    [SerializeField] public Sprite normal;
+    [SerializeField] public Sprite FrozenSprite;
+
+
+
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -59,5 +67,22 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void CongelarEnemigo(float tiempo)
+    {
+        StartCoroutine(Congelamiento(tiempo));
+    }
 
+    public IEnumerator Congelamiento(float tiempo)
+    {
+        speed = 0;
+
+        CambioSprite.GetComponent<SpriteRenderer>().sprite = FrozenSprite;
+
+        CambioSprite.GetComponent<Animator>().enabled = false;
+
+        yield return new WaitForSeconds(tiempo);
+
+        CambioSprite.GetComponent<Animator>().enabled = true;
+        speed = 2;
+    }
 }

@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1489e483723854fb903b851c615de6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 13
+  speed: 10
   "da\xF1o": 1
   TocaJugador: 0
 --- !u!212 &3933810280422821781

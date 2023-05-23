@@ -25,6 +25,13 @@ public class SistemaDeVida : MonoBehaviour
 
     public GameObject PlayerDash;
 
+
+
+    [Header("Puntos")]
+    [SerializeField] public float puntos;
+
+
+
     private void Start()
     {
         hpActual = Maxhp;    
@@ -41,7 +48,7 @@ public class SistemaDeVida : MonoBehaviour
         
 
         //INTERFAZ VIDA
-        VidaText.text = hpActual.ToString();
+        VidaText.text = ("Points ")+puntos.ToString();
         
         
     }
@@ -68,7 +75,20 @@ public class SistemaDeVida : MonoBehaviour
 
     public void Curar (float curacion)
     {
+
+        if (hpActual > Maxhp) return;
+
+
         hpActual += curacion;
+
+        if (hpActual >= 2) vidas[1].SetActive(true);
+
+        if (hpActual >= 3) vidas[2].SetActive(true);
+
+        if (hpActual >= 4) vidas[3].SetActive(true);
+
+        if (hpActual >= 5) vidas[4].SetActive(true);
+
     }
 
     public void Death()

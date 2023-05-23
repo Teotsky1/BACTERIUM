@@ -24,12 +24,43 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3527523588982684881}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: -0.1, z: 0}
+  m_LocalPosition: {x: 0.06, y: 0.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7746152899385576327}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6842684777238356084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2155987611075733194}
+  m_Layer: 0
+  m_Name: ParentDrop (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2155987611075733194
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6842684777238356084}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.22, y: -0.23, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7746152899385576327}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7746152899209141661
 GameObject:
@@ -41,6 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7746152899209141660}
   - component: {fileID: 7746152899209141663}
+  - component: {fileID: 5457053670833213986}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -104,7 +136,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cbb453137e15600408b04c57ad826993, type: 3}
+  m_Sprite: {fileID: 215305554, guid: 686bb3ce74e8fca429a4d6c7be3e6878, type: 3}
   m_Color: {r: 0.9995657, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -115,6 +147,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &5457053670833213986
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7746152899209141661}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: aa12855b34523164f8b4359c89b38ffb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7746152899385576325
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,11 +197,12 @@ Transform:
   m_GameObject: {fileID: 7746152899385576325}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.01, y: 2.52, z: -0.08296381}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7746152899209141660}
   - {fileID: 6016069959913080209}
+  - {fileID: 2155987611075733194}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -166,6 +220,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineOfSite: 14.3
   enemyVelocity: 2
+  CambioSprite: {fileID: 7746152899209141661}
+  normal: {fileID: 215305554, guid: 686bb3ce74e8fca429a4d6c7be3e6878, type: 3}
+  FrozenSprite: {fileID: 21300000, guid: 1c86be7355dff0c4a8b54e864b96d70c, type: 3}
 --- !u!114 &7746152899385576321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,7 +252,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.99
+  m_Radius: 0.48
 --- !u!114 &-7305795357406906024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,9 +265,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d79928fd905f518469905efc21132bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HpMax: 5
-  HpActu: 5
+  HpActu: 2
   parentDrop:
   - {fileID: 3527523588982684881}
+  - {fileID: 6842684777238356084}
   DropPrefab:
   - {fileID: 2606014242527149553, guid: 207f4ecd378203b4eb0921752d322cf3, type: 3}
+  - {fileID: 4594520002034857877, guid: 448d6858de04c094a8024bef833d854c, type: 3}
+  particlePrefab:
+  - {fileID: 4221167017087341046, guid: 1704b50dd5011da4b8592a1f2975b761, type: 3}
+  - {fileID: 3116372588365605075, guid: d5ced39a16ccb504a84544fd54b834c2, type: 3}

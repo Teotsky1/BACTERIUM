@@ -17,5 +17,4 @@ public class RotacionDisparo : MonoBehaviour
         anguloGrados = (180 / Mathf.PI) * anguloRadianes - 90;
         transform.rotation = Quaternion.Euler(0, 0, anguloGrados);
     }
-
 }

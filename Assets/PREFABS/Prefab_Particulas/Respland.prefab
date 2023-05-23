@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4980102451205726245}
   - component: {fileID: 8818528106952185464}
   - component: {fileID: 1879816471124247089}
+  - component: {fileID: -7820555563755230055}
   m_Layer: 0
   m_Name: Respland
   m_TagString: Untagged
@@ -4870,3 +4871,15 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-7820555563755230055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3116372588365605075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab58c38c8a308f48ac0e56c880d6f64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
