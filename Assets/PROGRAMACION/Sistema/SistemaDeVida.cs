@@ -25,6 +25,13 @@ public class SistemaDeVida : MonoBehaviour
 
     public GameObject PlayerDash;
 
+
+
+    [Header("Puntos")]
+    [SerializeField] public float puntos;
+
+
+
     private void Start()
     {
         hpActual = Maxhp;    
@@ -41,7 +48,7 @@ public class SistemaDeVida : MonoBehaviour
         
 
         //INTERFAZ VIDA
-        VidaText.text = hpActual.ToString();
+        VidaText.text = ("Points ")+puntos.ToString();
         
         
     }

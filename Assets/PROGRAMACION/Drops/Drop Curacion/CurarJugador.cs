@@ -14,5 +14,11 @@ public class CurarJugador : MonoBehaviour
 
             Destroy(this.gameObject);
         }
+
+    }
+
+    private void Update()
+    {
+        Destroy(this.gameObject , 9f);
     }
 }

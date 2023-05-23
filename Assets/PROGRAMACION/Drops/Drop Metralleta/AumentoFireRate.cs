@@ -17,6 +17,7 @@ public class AumentoFireRate : MonoBehaviour
         if (collision.gameObject.GetComponent<DisparoJugador>() != null)
         {
             collision.gameObject.GetComponent<DisparoJugador>().DisminuciónFireRate(ChangeParameter);
+            collision.gameObject.GetComponent<SistemaDeVida>().puntos++;
             Destroy(this.gameObject);
         }
     }

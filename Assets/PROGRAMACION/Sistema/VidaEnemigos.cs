@@ -27,6 +27,7 @@ public class VidaEnemigos : MonoBehaviour
 
         if(HpActu <= 0)
         {
+            
             Dropeo();
         }
         
@@ -45,9 +46,13 @@ public class VidaEnemigos : MonoBehaviour
 
     private void Update()
     {
+
         if (HpActu <= 0 )
         {
-            gameObject.SetActive(false);
+            
+            //gameObject.SetActive(false);
+            Destroy(gameObject);
+            
         }
     }
 }
