@@ -311,7 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d79928fd905f518469905efc21132bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HpActu: 5
+  HpActu: 3
   parentDrop:
   - {fileID: 337274309680740348}
   - {fileID: 337274309904946045}

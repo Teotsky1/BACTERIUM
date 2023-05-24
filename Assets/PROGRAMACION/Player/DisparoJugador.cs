@@ -50,6 +50,16 @@ public class DisparoJugador : MonoBehaviour
     
     public void DisminuciónFireRate(float Disminucion)
     {
-        fireRate -= Disminucion;
+        if (fireRate <= 0.55)
+        {
+            return;
+        }
+        else
+        {
+            fireRate -= Disminucion;
+    
+
+        }
+        
     }
 }

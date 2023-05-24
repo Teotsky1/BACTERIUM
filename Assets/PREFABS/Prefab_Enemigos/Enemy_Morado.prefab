@@ -249,7 +249,7 @@ MonoBehaviour:
   DropPrefab:
   - {fileID: 2606014242527149553, guid: 207f4ecd378203b4eb0921752d322cf3, type: 3}
   - {fileID: 6943832518840814798, guid: 217f85c9c7b1de840af1839097efa05d, type: 3}
-  - {fileID: 2606014242527149553, guid: 207f4ecd378203b4eb0921752d322cf3, type: 3}
+  - {fileID: 7535263933836779026, guid: a2a90dac40eed114b919bf10d8c14eb5, type: 3}
   particlePrefab:
   - {fileID: 4221167017087341046, guid: 1704b50dd5011da4b8592a1f2975b761, type: 3}
   - {fileID: 3116372588365605075, guid: d5ced39a16ccb504a84544fd54b834c2, type: 3}
